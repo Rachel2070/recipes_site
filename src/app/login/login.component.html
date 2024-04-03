@@ -1,0 +1,20 @@
+<form [formGroup]="loginForm">
+    <div class="nptContainer">
+        <h1>hi, nice to see you again :)</h1>
+        <p>
+            <mat-form-field appearance="outline" class="npt">
+                <mat-label>User Name</mat-label>
+                <input matInput formControlName="userName" name="name">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline" class="npt">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" name="password">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+        </p>
+        <button mat-raised-button color="primary" (click)="tryLogin()" [disabled]="!loginForm.valid">Primary</button>
+    </div>
+</form>
