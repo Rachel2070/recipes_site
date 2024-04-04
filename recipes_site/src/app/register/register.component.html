@@ -1,10 +1,11 @@
 <div class="nptContainer">
+    <h1>Nice to meet you!! </h1>
     <form [formGroup]="registerForm">
         <div *ngFor="let property of propertiesArr">
             <p>
                 <mat-form-field appearance="outline" class="npt">
                     <mat-label>{{property}}</mat-label>
-                    <input matInput formControlName={{property}} name={{property}} *ngIf()>
+                    <input matInput formControlName={{property}} name={{property}} >
                 </mat-form-field>
             </p>
         </div>

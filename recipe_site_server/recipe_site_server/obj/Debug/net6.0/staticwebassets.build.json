@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "UGikUCe3VilY9TFtByL0Qq0/9kEjpaoNxSBMcuiGmP8=",
+  "Source": "recipe_site_server",
+  "BasePath": "_content/recipe_site_server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
