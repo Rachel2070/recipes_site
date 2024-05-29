@@ -12,9 +12,9 @@ namespace recipe_site_server.Controllers
     {
         private static List<categoryModel> categoryList = new List<categoryModel>()
         {
-            new categoryModel {CategoryId="1", CategoryName="dessert", CategoryIcon='t'},
-            new categoryModel {CategoryId="2", CategoryName="mainDish", CategoryIcon='t'},
-            new categoryModel {CategoryId="3", CategoryName="sideDish", CategoryIcon='t'}
+            new categoryModel {CategoryId="1", CategoryName="dessert", CategoryIcon="https://cdn.icon-icons.com/icons2/1948/PNG/512/free-30-instagram-stories-icons19_122566.png"},
+            new categoryModel {CategoryId="2", CategoryName="mainDish", CategoryIcon="https://cdn.icon-icons.com/icons2/1948/PNG/512/free-30-instagram-stories-icons19_122566.png"},
+            new categoryModel {CategoryId="3", CategoryName="sideDish", CategoryIcon="https://cdn.icon-icons.com/icons2/1948/PNG/512/free-30-instagram-stories-icons19_122566.png"}
         };
 
 

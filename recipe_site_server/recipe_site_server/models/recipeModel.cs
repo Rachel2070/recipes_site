@@ -6,7 +6,7 @@
         public string RecipeName { get; set; }
         public string CategoryId { get; set; }
         public int RecipeDurationM { get; set; }
-        public string RecipeLevel { get; set; }
+        public int RecipeLevel { get; set; }
         public DateTime AddRecipeTime { get; set; }
         public string[] RecipeIngredients { get; set; }
         public string[] RecipePreparation { get; set; }

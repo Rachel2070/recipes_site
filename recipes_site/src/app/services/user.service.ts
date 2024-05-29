@@ -20,7 +20,7 @@ export class UserService {
     return this._http.get<User>(`${this.baseUrl}/${id}`)
   }
 
-  public getUserByName(name: User): Observable<any> {
+  public getUserByName(name: string): Observable<any> {
     return this._http.post<any>(`${this.baseUrl}/name`, name)
   }
 

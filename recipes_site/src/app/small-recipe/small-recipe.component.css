@@ -1,0 +1,19 @@
+div{
+    border: 3px solid black;
+}
+
+button{
+    margin-left: 10px;
+}
+
+p{
+    margin-left: 10px;
+}
+
+div{
+    margin: 10px;
+}
+.pic{
+    height: 100px;
+    width: 180px;
+}

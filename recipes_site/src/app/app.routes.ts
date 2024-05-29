@@ -1,3 +1,13 @@
 import { Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AllRecipeComponent } from './all-recipe/all-recipe.component';
+import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent },
+    { path: 'register/:userNameToPass', component: RegisterComponent },
+    { path: ':userId/allRecipes', component: AllRecipeComponent },
+    { path: ':userId/recipeDetail/:recipe', component: RecipeDetailsComponent }
+];

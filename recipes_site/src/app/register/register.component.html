@@ -4,8 +4,17 @@
         <div *ngFor="let property of propertiesArr">
             <p>
                 <mat-form-field appearance="outline" class="npt">
-                    <mat-label>{{property}}</mat-label>
-                    <input matInput formControlName={{property}} name={{property}} >
+                    <!-- @if(property==userName){
+                    <mat-form-field appearance="outline" class="npt">
+                        <mat-label>{{this.userName}}</mat-label>
+                        <input matInput formControlName={{property}} name={{property}} [(ngModel)]="this.userName">
+                    </mat-form-field>
+                    }
+                    @else{ -->
+                        <mat-label>{{property}}</mat-label>
+                        <input matInput formControlName={{property}} name={{property}}>
+
+                    <!-- } -->
                 </mat-form-field>
             </p>
         </div>

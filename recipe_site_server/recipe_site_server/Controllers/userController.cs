@@ -46,7 +46,7 @@ namespace recipe_site_server.Controllers
                 return NotFound("User not found");
 
             else if (userList[index].UserPassword == value.UserPassword && userList[index].UserName == value.UserName) 
-                return StatusCode(200);
+                return Ok( new { StatusCode = 200, User = userList[index] });
 
             else return BadRequest("Incorrect password or user name");
         }
@@ -55,10 +55,22 @@ namespace recipe_site_server.Controllers
         [HttpPost]
         public userModel Post([FromBody] userModel value)
         {
+            bool flag = true; 
             value.UserId = idCount.ToString();
-            userList.Add(value);
-            idCount++;
-            return value;
+
+            foreach(var user in userList)
+            {
+                if (user.UserName == value.UserName && user.UserPassword == value.UserPassword)
+                    flag = false;
+            }
+            if (flag)
+            {
+                userList.Add(value);
+                idCount++;
+                return value;
+            }
+            return null;
+            
         }
 
         // PUT api/<userController>/5

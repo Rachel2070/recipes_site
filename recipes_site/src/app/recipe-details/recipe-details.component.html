@@ -1,0 +1,41 @@
+@if(loaded){
+<div class="container">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-subtitle>
+                <img id="icon" [src]="'../../assets/icons/' + category.categoryId + '.png'" />
+                {{ category.categoryName }}
+            </mat-card-subtitle>
+            <mat-card-title> {{recipe.recipeName}}</mat-card-title>
+            <mat-card-subtitle>Difficulty: <span *ngFor="let star of [].constructor(recipe.recipeLevel); let i = index">
+                    ⭐
+                </span></mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="recipe.recipeImage" alt="">
+        <mat-card-content>
+            <p>Ingredients</p>
+            <ul>
+            <li *ngFor="let ing of recipe.recipeIngredients">
+                    {{ing}}
+            </li>
+        </ul>
+            <p>Preparation</p>
+            <ol>
+                <li *ngFor="let prep of recipe.recipePreparation">
+                    {{prep}}
+                </li>
+            </ol>
+        </mat-card-content>
+        <mat-card-actions>
+            @if(creatore){
+                <button mat-button>Delete</button>
+                <button mat-button>Edit</button>
+            }
+            
+        </mat-card-actions>
+    </mat-card>
+</div>
+}
+@else {
+<div>Loading...</div>
+}

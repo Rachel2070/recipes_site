@@ -3,7 +3,7 @@ export class Recipe{
     recipeName !: string
     categoryId !: string
     recipeDurationM !: number
-    recipeLevel !: string
+    recipeLevel !: number
     addRecipeTime !: Date
     recipeIngredients  !: string []
     recipePreparation !:string[]

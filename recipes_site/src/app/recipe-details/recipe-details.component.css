@@ -1,0 +1,16 @@
+.pic{
+    height: 400px;
+}
+.container{
+    margin-left: 40%;
+}
+.example-card {
+    max-width: 500px;
+    max-height: 1000px;
+  }
+  
+ #icon{
+    width: 40px;
+ }
+
+  

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\Desktop\\angular\\final_project\\recipe_site_server\\recipe_site_server\\recipe_site_server.csproj": {}
+    "F:\\לימודים\\angular\\final_project\\recipe_site_server\\recipe_site_server\\recipe_site_server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\Desktop\\angular\\final_project\\recipe_site_server\\recipe_site_server\\recipe_site_server.csproj": {
+    "F:\\לימודים\\angular\\final_project\\recipe_site_server\\recipe_site_server\\recipe_site_server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\Desktop\\angular\\final_project\\recipe_site_server\\recipe_site_server\\recipe_site_server.csproj",
+        "projectUniqueName": "F:\\לימודים\\angular\\final_project\\recipe_site_server\\recipe_site_server\\recipe_site_server.csproj",
         "projectName": "recipe_site_server",
-        "projectPath": "C:\\Users\\USER\\Desktop\\angular\\final_project\\recipe_site_server\\recipe_site_server\\recipe_site_server.csproj",
+        "projectPath": "F:\\לימודים\\angular\\final_project\\recipe_site_server\\recipe_site_server\\recipe_site_server.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\Desktop\\angular\\final_project\\recipe_site_server\\recipe_site_server\\obj\\",
+        "outputPath": "F:\\לימודים\\angular\\final_project\\recipe_site_server\\recipe_site_server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
