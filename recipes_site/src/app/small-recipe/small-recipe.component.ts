@@ -3,12 +3,14 @@ import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../models/recipe.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 
 @Component({
   selector: 'app-small-recipe',
   standalone: true,
-  imports: [MatButtonModule],
+  imports: [MatButtonModule, CommonModule, MatCardModule, MatButtonModule],
   templateUrl: './small-recipe.component.html',
   styleUrl: './small-recipe.component.css'
 })

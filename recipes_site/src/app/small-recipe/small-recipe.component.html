@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <img class="pic" src={{recipe.recipeImage}}>
     <p>
         Name: {{recipe.recipeName}}
@@ -9,5 +9,26 @@
     <p>
         Difficulty: {{recipe.recipeLevel}}
     </p>
-    <button mat-raised-button (click)="details()">More details</button>
+</div> -->
+<div class="container">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <!-- <mat-card-subtitle>
+                <img id="icon" [src]="'../../assets/icons/' + category.categoryId + '.png'" />
+                {{ category.categoryName }}
+            </mat-card-subtitle> -->
+            <mat-card-title> {{recipe.recipeName}}</mat-card-title>
+            <mat-card-title>Duration in minute: {{recipe.recipeDurationM}}</mat-card-title>
+            <mat-card-title>Difficulty: {{recipe.recipeLevel}}</mat-card-title>
+            <!-- <mat-card-subtitle>Difficulty: <span *ngFor="let star of [].constructor(recipe.recipeLevel); let i = index">
+                    ⭐
+                </span></mat-card-subtitle> -->
+        </mat-card-header>
+        <img mat-card-image src={{recipe.recipeImage}} alt="">
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="details()">More details</button>
+        </mat-card-actions>
+    </mat-card>
 </div>
