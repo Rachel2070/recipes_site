@@ -2,11 +2,13 @@ import { Component, Input } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../models/recipe.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @Component({
   selector: 'app-small-recipe',
   standalone: true,
-  imports: [],
+  imports: [MatButtonModule],
   templateUrl: './small-recipe.component.html',
   styleUrl: './small-recipe.component.css'
 })

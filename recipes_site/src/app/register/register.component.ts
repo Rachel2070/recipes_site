@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserService } from '../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-register',
   standalone: true,

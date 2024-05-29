@@ -1,0 +1,48 @@
+<form [formGroup]="addRecipeForm">
+    <div class="nptContainer">
+        <h1>New recipe</h1>
+        <p>
+            <mat-form-field appearance="outline" class="npt">
+                <mat-label>Recipe Name</mat-label>
+                <input matInput formControlName="RecipeName" name="name" type="text">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline" class="npt">
+                <mat-label>Category</mat-label>
+                <input matInput formControlName="CategoryId" name="userPassword" >
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline" class="npt">
+                <mat-label>Recipe Duration (in minutes)</mat-label>
+                <input matInput formControlName="RecipeDurationM" name="userPassword" type="number">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline" class="npt">
+                <mat-label>Recipe Level</mat-label>
+                <input matInput formControlName="RecipeLevel" name="RecipeLevel" type="number">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline" class="npt">
+                <mat-label>Recipe Image Link</mat-label>
+                <input matInput formControlName="RecipeImage" name="RecipeImage" type="text">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline" class="npt">
+                <mat-label>Recipe Ingredients</mat-label>
+                <input matInput formControlName="RecipeIngredients" name="userPassword">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline" class="npt">
+                <mat-label>Recipe Preparation</mat-label>
+                <input matInput formControlName="RecipePreparation" name="userPassword" >
+            </mat-form-field>
+        </p>
+        <button mat-raised-button [disabled]="!addRecipeForm.valid">Add</button>
+    </div>
+</form>

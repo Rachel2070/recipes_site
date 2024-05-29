@@ -5,17 +5,15 @@
             <mat-form-field appearance="outline" class="npt">
                 <mat-label>User Name</mat-label>
                 <input matInput formControlName="userName" name="name" [(ngModel)]="userNameToPass">
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline" class="npt">
                 <mat-label>Password</mat-label>
                 <input matInput formControlName="userPassword" name="userPassword">
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
             </mat-form-field>
         </p>
-        <button mat-raised-button color="primary" (click)="tryLogin()" [disabled]="!loginForm.valid">Login</button>
+        <button mat-raised-button  (click)="tryLogin()" [disabled]="!loginForm.valid">Login</button>
     </div>
 </form>
 
