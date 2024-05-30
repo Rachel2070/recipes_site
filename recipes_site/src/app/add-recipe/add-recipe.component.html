@@ -4,50 +4,57 @@
         <p>
             <mat-form-field appearance="outline" class="npt">
                 <mat-label>Recipe Name</mat-label>
-                <input matInput formControlName="RecipeName" name="name" type="text">
+                <input matInput formControlName="recipeName" name="name" type="text">
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline" class="npt">
                 <mat-label>Category</mat-label>
-                <select matNativeControl formControlName="CategoryId" name="CategoryId">
-                    <option value="" disabled selected (click)="setCategortId($event)"></option>
-                    <option value="1">main</option>
+                <select matNativeControl (change)="setCategortId($event)" formControlName="categoryId" name="CategoryId">
+                    <option value="1" selected>main</option>
                     <option value="2">extras</option>
                     <option value="3">dessert</option>
-                </select>       
+                </select>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline" class="npt">
                 <mat-label>Recipe Duration (in minutes)</mat-label>
-                <input matInput formControlName="RecipeDurationM" name="RecipeDurationM" type="number">
+                <input matInput formControlName="recipeDurationM" name="RecipeDurationM" type="number">
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline" class="npt">
                 <mat-label>Recipe Level</mat-label>
-                <input matInput formControlName="RecipeLevel" name="RecipeLevel" type="number">
+                <input matInput formControlName="recipeLevel" name="RecipeLevel" type="number">
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline" class="npt">
                 <mat-label>Recipe Image Link</mat-label>
-                <input matInput formControlName="RecipeImage" name="RecipeImage" type="text">
+                <input matInput formControlName="recipeImage" name="RecipeImage" type="text">
             </mat-form-field>
         </p>
-        <p>
-            <mat-form-field appearance="outline" class="npt">
-                <mat-label>Recipe Ingredients</mat-label>
-                <input matInput formControlName="RecipeIngredients" name="userPassword">
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field appearance="outline" class="npt">
-                <mat-label>Recipe Preparation</mat-label>
-                <input matInput formControlName="RecipePreparation" name="userPassword">
-            </mat-form-field>
-        </p>
+        <div formArrayName="recipeIngredients">
+            <div *ngFor="let ingredient of recipeIngredients.controls; let i=index">
+                <p>
+                    <mat-form-field appearance="outline" class="npt">
+                        <mat-label>Recipe Ingredient</mat-label>
+                        <input matInput [formControlName]="i" (input)="onIngredientInput(i)">
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+        <div formArrayName="recipePreparation">
+            <div *ngFor="let preparation of recipePreparation.controls; let i=index">
+                <p>
+                    <mat-form-field appearance="outline" class="npt">
+                        <mat-label>Recipe Preparation</mat-label>
+                        <input matInput [formControlName]="i" (input)="onPreparationInput(i)">
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
         <button mat-raised-button [disabled]="!addRecipeForm.valid" (click)="addRecipe()">Add</button>
     </div>
 </form>
