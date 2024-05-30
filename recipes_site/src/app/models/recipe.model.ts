@@ -9,5 +9,4 @@ export class Recipe{
     recipePreparation !:string[]
     userId !:string
     recipeImage !:string
-
 }

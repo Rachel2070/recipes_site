@@ -8,26 +8,26 @@ import { Recipe } from '../models/recipe.model';
 })
 export class RecipeService {
 
-  baseUrl='https://localhost:7042/api/recipe'
-  constructor(private _http:HttpClient) { }
+  baseUrl = 'https://localhost:7042/api/recipe'
+  constructor(private _http: HttpClient) { }
 
-  public getRecipeList(): Observable<Recipe[]>{
+  public getRecipeList(): Observable<Recipe[]> {
     return this._http.get<Recipe[]>(this.baseUrl)
   }
 
-  public getRecipeById(id:string):Observable<Recipe>{
+  public getRecipeById(id: string): Observable<Recipe> {
     return this._http.get<Recipe>(`${this.baseUrl}/${id}`)
   }
 
-  public addRecipe(value:Recipe):Observable<Recipe>{
-    return this._http.post<Recipe>(this.baseUrl,value)
+  public addRecipe(value: Recipe): Observable<Recipe> {
+    return this._http.post<Recipe>(this.baseUrl, value)
   }
 
-  public updateRecipe(value:Recipe):Observable<Recipe>{
-    return this._http.put<Recipe>(this.baseUrl,value)
+  public updateRecipe(value: Recipe): Observable<Recipe> {
+    return this._http.put<Recipe>(this.baseUrl, value)
   }
 
-  public deleteRecipe(id:string):Observable<Recipe>{
+  public deleteRecipe(id: string): Observable<Recipe> {
     return this._http.delete<Recipe>(`${this.baseUrl}/${id}`)
   }
 

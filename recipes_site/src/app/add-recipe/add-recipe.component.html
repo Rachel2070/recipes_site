@@ -1,5 +1,5 @@
 <form [formGroup]="addRecipeForm">
-    <div class="nptContainer">
+    <div class="container">
         <h1>New recipe</h1>
         <p>
             <mat-form-field appearance="outline" class="npt">
@@ -10,13 +10,18 @@
         <p>
             <mat-form-field appearance="outline" class="npt">
                 <mat-label>Category</mat-label>
-                <input matInput formControlName="CategoryId" name="userPassword" >
+                <select matNativeControl formControlName="CategoryId" name="CategoryId">
+                    <option value="" disabled selected (click)="setCategortId($event)"></option>
+                    <option value="1">main</option>
+                    <option value="2">extras</option>
+                    <option value="3">dessert</option>
+                </select>       
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline" class="npt">
                 <mat-label>Recipe Duration (in minutes)</mat-label>
-                <input matInput formControlName="RecipeDurationM" name="userPassword" type="number">
+                <input matInput formControlName="RecipeDurationM" name="RecipeDurationM" type="number">
             </mat-form-field>
         </p>
         <p>
@@ -40,9 +45,9 @@
         <p>
             <mat-form-field appearance="outline" class="npt">
                 <mat-label>Recipe Preparation</mat-label>
-                <input matInput formControlName="RecipePreparation" name="userPassword" >
+                <input matInput formControlName="RecipePreparation" name="userPassword">
             </mat-form-field>
         </p>
-        <button mat-raised-button [disabled]="!addRecipeForm.valid">Add</button>
+        <button mat-raised-button [disabled]="!addRecipeForm.valid" (click)="addRecipe()">Add</button>
     </div>
 </form>

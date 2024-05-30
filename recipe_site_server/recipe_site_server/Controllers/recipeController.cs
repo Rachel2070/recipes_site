@@ -17,6 +17,7 @@ namespace recipe_site_server.Controllers
                                                 new recipeModel{RecipeId="4",RecipeName="cheeseCake",RecipeDurationM=30,RecipeIngredients=new string[]{"f","l","j"}, RecipeLevel=5, RecipePreparation = new string[]{"jmkl", "vbhjkl"}, AddRecipeTime=new DateTime(),CategoryId="1", UserId="3",RecipeImage="https://medias.timeout.co.il/www/uploads/2022/04/1649058943_1261542_72289-e1649072974609-600x600.jpg"},
 
         };
+        public static int idCount=5;
         // GET: api/<recipeController>
         [HttpGet]
         public IEnumerable<recipeModel> Get()
@@ -37,6 +38,7 @@ namespace recipe_site_server.Controllers
         [HttpPost]
         public recipeModel Post([FromBody] recipeModel value)
         {
+            value.RecipeId = idCount.ToString();
             recipesList.Add(value);
             return value;
         }
