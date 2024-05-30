@@ -2,7 +2,7 @@
 {
     public class recipeModel
     {
-        public string RecipeId { get; set; }    
+        public string ? RecipeId { get; set; }    
         public string RecipeName { get; set; }
         public string CategoryId { get; set; }
         public int RecipeDurationM { get; set; }

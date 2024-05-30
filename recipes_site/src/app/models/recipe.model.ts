@@ -1,5 +1,5 @@
 export class Recipe{
-    recipeId !: string
+    recipeId ?: string
     recipeName !: string
     categoryId !: string
     recipeDurationM !: number
