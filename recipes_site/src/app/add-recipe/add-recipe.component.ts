@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,6 +9,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { Recipe } from '../models/recipe.model';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2'
+import { TYPE } from './values.constants'
+
 
 @Component({
   selector: 'app-add-recipe',
@@ -60,6 +63,27 @@ export class AddRecipeComponent {
     }
   }
 
+  show(typeIcon = TYPE.SUCCESS) {
+    Swal.fire({
+      title: 'Error!',
+      text: 'Do you want to continue',
+      icon: typeIcon,
+      confirmButtonText: 'Cool'
+    });
+  }
+
+  toast(typeIcon = TYPE.SUCCESS, timerProgressBar: boolean = false) {
+    Swal.fire({
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      icon: typeIcon,
+      timerProgressBar,
+      timer: 5000,
+      title: 'Recipe was successfully added'
+    })
+  }
+
   public recipe!: Recipe
   
   public addRecipe() {
@@ -71,6 +95,7 @@ export class AddRecipeComponent {
     this._recipeService.addRecipe(this.recipe).subscribe({
       next: (res) => {
         console.log("good", res);
+        this.toast()
         this._router.navigate([`${userId}/allRecipes`]);
       },
       error: (err) => {
