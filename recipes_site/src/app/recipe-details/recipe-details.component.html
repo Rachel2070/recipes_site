@@ -29,7 +29,7 @@
         <mat-card-actions>
             @if(creatore){
                 <button  mat-raised-button>Delete</button>
-                <button mat-raised-button>Edit</button>
+                <button mat-raised-button (click)="editRecipe()">Edit</button>
             }
             
         </mat-card-actions>

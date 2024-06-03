@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
 import { RecipeService } from '../services/recipe.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from '../services/category.service';
 import { Category } from '../models/category.model';
 import { CommonModule } from '@angular/common';
@@ -27,7 +27,7 @@ export class RecipeDetailsComponent implements OnInit {
     private _recipeService: RecipeService, 
     private _activatedRoute: ActivatedRoute, 
     private _categoryService: CategoryService,
-    
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -59,5 +59,10 @@ export class RecipeDetailsComponent implements OnInit {
         console.log("error is", err);
       }
     });
+  }
+
+  editRecipe(){
+    const userId = this._activatedRoute.snapshot.paramMap.get('userId');
+    this._router.navigate([`${userId}/editRecipe/${this.recipe.recipeId}`])
   }
 }

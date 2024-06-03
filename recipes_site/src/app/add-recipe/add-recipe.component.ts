@@ -16,7 +16,7 @@ import { TYPE } from './values.constants'
 @Component({
   selector: 'app-add-recipe',
   standalone: true,
-  imports: [ReactiveFormsModule,FormsModule,MatFormFieldModule,MatInputModule,MatIconModule,MatButtonModule,MatDividerModule,MatIconModule,CommonModule],
+  imports: [ReactiveFormsModule, FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatDividerModule, MatIconModule, CommonModule],
   templateUrl: './add-recipe.component.html',
   styleUrls: ['./add-recipe.component.css']
 })
@@ -61,6 +61,7 @@ export class AddRecipeComponent {
     } else if (this.recipePreparation.at(index).value === "" && this.recipePreparation.length > 1 && !this.recipePreparation.at(index).hasValidator(Validators.required)) {
       this.recipePreparation.removeAt(index);
     }
+
   }
 
   show(typeIcon = TYPE.SUCCESS) {
@@ -85,16 +86,17 @@ export class AddRecipeComponent {
   }
 
   public recipe!: Recipe
-  
+
   public addRecipe() {
     const userId = this._activatedRoute.snapshot.paramMap.get('userId');
+    if (this.recipeIngredients.length > 1) this.recipeIngredients.removeAt(this.recipeIngredients.length - 1)
+    if (this.recipePreparation.length > 1) this.recipePreparation.removeAt(this.recipePreparation.length - 1)
     let recipeData = this.addRecipeForm.value;
     recipeData.userId = userId;
-    recipeData.addRecipeTime = new Date();
+    recipeData.addRecipeTime = new Date()
     this.recipe = recipeData
     this._recipeService.addRecipe(this.recipe).subscribe({
       next: (res) => {
-        console.log("good", res);
         this.toast()
         this._router.navigate([`${userId}/allRecipes`]);
       },

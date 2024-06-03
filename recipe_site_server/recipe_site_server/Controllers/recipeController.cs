@@ -39,6 +39,7 @@ namespace recipe_site_server.Controllers
         public recipeModel Post([FromBody] recipeModel value)
         {
             value.RecipeId = idCount.ToString();
+            idCount++;
             recipesList.Add(value);
             return value;
         }

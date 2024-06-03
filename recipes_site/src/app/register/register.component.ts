@@ -18,19 +18,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  constructor(private _router: Router, private _rout: ActivatedRoute, private _userService: UserService) { }
-  public userName!: string
-
-  ngOnInit(): void {
-    this._rout.params.subscribe((params) => {
-      this.userName = params['userNameToPass']
-    })
-  }
+  constructor(private _router: Router, private _activatedRoute: ActivatedRoute, private _userService: UserService) { } 
 
   public propertiesArr = ["userName", "userAddress", "userEmail", "userPassword"]
+  public userName = this._activatedRoute.snapshot.paramMap.get('userNameToPass') ;
+
 
   public registerForm: FormGroup = new FormGroup({
-    "userName": new FormControl("", Validators.required),
+    "userName": new FormControl( this.userName , Validators.required),
     "userAddress": new FormControl("", Validators.required),
     "userEmail": new FormControl("", Validators.required),
     "userPassword": new FormControl("", Validators.required)
