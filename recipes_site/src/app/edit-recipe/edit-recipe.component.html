@@ -1,1 +1,65 @@
-<p>edit-recipe works!</p>
+<div *ngIf="loaded; else loading">
+    <form [formGroup]="editRecipeForm">
+      <div class="container">
+        <h1>Edit Recipe</h1>
+        <p>
+          <mat-form-field appearance="outline" class="npt">
+            <mat-label>Recipe Name</mat-label>
+            <input matInput formControlName="recipeName" name="name" type="text">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline" class="npt">
+            <mat-label>Category</mat-label>
+            <select matNativeControl (change)="setCategortId($event)" formControlName="categoryId" name="CategoryId">
+              <option value="1" selected>main</option>
+              <option value="2">extras</option>
+              <option value="3">dessert</option>
+            </select>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline" class="npt">
+            <mat-label>Recipe Duration (in minutes)</mat-label>
+            <input matInput formControlName="recipeDurationM" name="RecipeDurationM" type="number">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline" class="npt">
+            <mat-label>Recipe Level</mat-label>
+            <input matInput formControlName="recipeLevel" name="RecipeLevel" type="number">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline" class="npt">
+            <mat-label>Recipe Image Link</mat-label>
+            <input matInput formControlName="recipeImage" name="RecipeImage" type="text">
+          </mat-form-field>
+        </p>
+        <div formArrayName="recipeIngredients">
+          <div *ngFor="let ingredient of recipeIngredients.controls; let i=index">
+            <p>
+              <mat-form-field appearance="outline" class="npt">
+                <mat-label>Recipe Ingredient</mat-label>
+                <input matInput [formControlName]="i" (input)="onIngredientInput(i)">
+              </mat-form-field>
+            </p>
+          </div>
+        </div>
+        <div formArrayName="recipePreparation">
+          <div *ngFor="let preparation of recipePreparation.controls; let i=index">
+            <p>
+              <mat-form-field appearance="outline" class="npt">
+                <mat-label>Recipe Preparation</mat-label>
+                <input matInput [formControlName]="i" (input)="onPreparationInput(i)">
+              </mat-form-field>
+            </p>
+          </div>
+        </div>
+        <button mat-raised-button [disabled]="!editRecipeForm.valid" (click)="editRecipe()">Save</button>
+      </div>
+    </form>
+  </div>
+  <ng-template #loading>
+    <div>Loading...</div>
+  </ng-template>  

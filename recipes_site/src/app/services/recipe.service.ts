@@ -24,7 +24,7 @@ export class RecipeService {
   }
 
   public updateRecipe(value: Recipe): Observable<Recipe> {
-    return this._http.put<Recipe>(this.baseUrl, value)
+    return this._http.put<Recipe>(`${this.baseUrl}/${value.recipeId}`, value)
   }
 
   public deleteRecipe(id: string): Observable<Recipe> {
