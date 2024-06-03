@@ -174,4 +174,8 @@ export class EditRecipeComponent implements OnInit {
       }
     });
   }
+
+  public cancel(){
+    const userId = this._activatedRoute.snapshot.paramMap.get('userId');
+    this._router.navigate([`${userId}/recipeDetail/${this.recipe.recipeId}`])  }
 }
