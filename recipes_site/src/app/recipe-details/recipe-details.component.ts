@@ -5,9 +5,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from '../services/category.service';
 import { Category } from '../models/category.model';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
+import { TYPE } from '../add-recipe/values.constants';
 
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-recipe-details',
@@ -24,8 +26,8 @@ export class RecipeDetailsComponent implements OnInit {
   public category!: Category;
 
   constructor(
-    private _recipeService: RecipeService, 
-    private _activatedRoute: ActivatedRoute, 
+    private _recipeService: RecipeService,
+    private _activatedRoute: ActivatedRoute,
     private _categoryService: CategoryService,
     private _router: Router
   ) { }
@@ -39,8 +41,8 @@ export class RecipeDetailsComponent implements OnInit {
           this.recipe = res;
           this.getCategory();
           this.loaded = true;
-          if(userId == this.recipe.userId){
-            this.creatore=true
+          if (userId == this.recipe.userId) {
+            this.creatore = true
           }
         },
         error: (err) => {
@@ -61,8 +63,45 @@ export class RecipeDetailsComponent implements OnInit {
     });
   }
 
-  editRecipe(){
+  editRecipe() {
     const userId = this._activatedRoute.snapshot.paramMap.get('userId');
     this._router.navigate([`${userId}/editRecipe/${this.recipe.recipeId}`])
+  }
+
+  deleteRecipe() {
+    const id = this._activatedRoute.snapshot.paramMap.get('recipe');
+    const userId = this._activatedRoute.snapshot.paramMap.get('userId');
+    if (id) {
+      this._recipeService.deleteRecipe(id).subscribe({
+        next: (res) => {
+          this.toast();
+          this._router.navigate([`${userId}/allRecipes`]);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    }
+  }
+
+  show(typeIcon = TYPE.SUCCESS) {
+    Swal.fire({
+      title: 'Error!',
+      text: 'Do you want to continue',
+      icon: typeIcon,
+      confirmButtonText: 'Cool'
+    });
+  }
+
+  toast(typeIcon = TYPE.SUCCESS, timerProgressBar: boolean = false) {
+    Swal.fire({
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      icon: typeIcon,
+      timerProgressBar,
+      timer: 5000,
+      title: 'Recipe was successfully deleted'
+    });
   }
 }

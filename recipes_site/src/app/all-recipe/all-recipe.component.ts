@@ -7,6 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 
 
+import Swal from 'sweetalert2';
+import { TYPE } from '../add-recipe/values.constants';
+
 @Component({
   selector: 'app-all-recipe',
   standalone: true,
@@ -32,6 +35,31 @@ export class AllRecipeComponent {
 
   addRecipe(){
     const userId = this._activatedRoute.snapshot.paramMap.get('userId');
-    this._router.navigate([`${userId}/addRecipe`])
+    if(userId){
+          this._router.navigate([`${userId}/addRecipe`])
+    } else{
+      this.toast()
+    }
+  }
+
+  show(typeIcon = TYPE.INFO) {
+    Swal.fire({
+      title: 'Error!',
+      text: 'Do you want to continue',
+      icon: typeIcon,
+      confirmButtonText: 'Cool'
+    });
+  }
+
+  toast(typeIcon = TYPE.INFO, timerProgressBar: boolean = false) {
+    Swal.fire({
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      icon: typeIcon,
+      timerProgressBar,
+      timer: 5000,
+      title: 'You must sign up first'
+    });
   }
 }

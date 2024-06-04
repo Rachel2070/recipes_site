@@ -11,6 +11,7 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register/:userNameToPass', component: RegisterComponent },
     { path: ':userId/allRecipes', component: AllRecipeComponent },
+    { path: 'allRecipes', component: AllRecipeComponent },
     { path: ':userId/recipeDetail/:recipe', component: RecipeDetailsComponent },
     { path: ':userId/editRecipe/:recipe', component: EditRecipeComponent },
     { path: ':userId/addRecipe', component: AddRecipeComponent }

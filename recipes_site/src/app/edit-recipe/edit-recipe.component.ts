@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
+
 import { Recipe } from '../models/recipe.model';
-import Swal from 'sweetalert2';
+
+import Swal from 'sweetalert2'
 import { TYPE } from '../add-recipe/values.constants';
+
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -146,7 +149,7 @@ export class EditRecipeComponent implements OnInit {
       icon: typeIcon,
       timerProgressBar,
       timer: 5000,
-      title: 'Recipe was successfully added'
+      title: 'Recipe was successfully updated'
     });
   }
 

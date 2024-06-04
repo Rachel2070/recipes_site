@@ -8,7 +8,7 @@
             </mat-card-subtitle>
             <mat-card-title> {{recipe.recipeName}}</mat-card-title>
             <mat-card-subtitle>Difficulty: <span *ngFor="let star of [].constructor(recipe.recipeLevel); let i = index">
-                    🥄
+                    ⭐
                 </span></mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image [src]="recipe.recipeImage" alt="">
@@ -28,7 +28,7 @@
         </mat-card-content>
         <mat-card-actions>
             @if(creatore){
-                <button  mat-raised-button>Delete</button>
+                <button  mat-raised-button (click)="deleteRecipe()">Delete</button>
                 <button mat-raised-button (click)="editRecipe()">Edit</button>
             }
             

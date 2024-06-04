@@ -6,6 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 
+import Swal from 'sweetalert2';
+import { TYPE } from '../add-recipe/values.constants';
 
 @Component({
   selector: 'app-small-recipe',
@@ -16,12 +18,37 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class SmallRecipeComponent {
 
-  constructor (private _router: Router, private _activatedRoute: ActivatedRoute) { }
+  constructor(private _router: Router, private _activatedRoute: ActivatedRoute) { }
 
   @Input() recipe!: Recipe
 
-  public details(){
+  public details() {
     const userId = this._activatedRoute.snapshot.paramMap.get('userId');
-    this._router.navigate([`${userId}/recipeDetail/${this.recipe.recipeId}`])
+    if (userId) {
+      this._router.navigate([`${userId}/recipeDetail/${this.recipe.recipeId}`])
+    } else { 
+      this.toast()
+    }
+  }
+
+  show(typeIcon = TYPE.INFO) {
+    Swal.fire({
+      title: 'Error!',
+      text: 'Do you want to continue',
+      icon: typeIcon,
+      confirmButtonText: 'Cool'
+    });
+  }
+
+  toast(typeIcon = TYPE.INFO, timerProgressBar: boolean = false) {
+    Swal.fire({
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      icon: typeIcon,
+      timerProgressBar,
+      timer: 5000,
+      title: 'You must sign up first'
+    });
   }
 }
