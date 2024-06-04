@@ -28,8 +28,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
-    MatIconModule
-  ],
+    MatIconModule,
+],
   templateUrl: './edit-recipe.component.html',
   styleUrls: ['./edit-recipe.component.css']
 })

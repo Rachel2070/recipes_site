@@ -10,6 +10,7 @@ export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'register/:userNameToPass', component: RegisterComponent },
+    { path: 'register', component: RegisterComponent },
     { path: ':userId/allRecipes', component: AllRecipeComponent },
     { path: 'allRecipes', component: AllRecipeComponent },
     { path: ':userId/recipeDetail/:recipe', component: RecipeDetailsComponent },

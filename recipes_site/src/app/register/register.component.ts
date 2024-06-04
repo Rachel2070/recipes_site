@@ -10,6 +10,7 @@ import { UserService } from '../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -18,14 +19,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  constructor(private _router: Router, private _activatedRoute: ActivatedRoute, private _userService: UserService) { } 
+  constructor(private _router: Router, private _activatedRoute: ActivatedRoute, private _userService: UserService, ) { }
 
   public propertiesArr = ["userName", "userAddress", "userEmail", "userPassword"]
-  public userName = this._activatedRoute.snapshot.paramMap.get('userNameToPass') ;
+  public userName = this._activatedRoute.snapshot.paramMap.get('userNameToPass') || "";
 
 
   public registerForm: FormGroup = new FormGroup({
-    "userName": new FormControl( this.userName , Validators.required),
+    "userName": new FormControl(this.userName, Validators.required),
     "userAddress": new FormControl("", Validators.required),
     "userEmail": new FormControl("", Validators.required),
     "userPassword": new FormControl("", Validators.required)
