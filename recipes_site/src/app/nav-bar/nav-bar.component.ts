@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabChangeEvent, MatTabsModule } from '@angular/material/tabs';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import Swal from 'sweetalert2';
+import { TYPE } from '../add-recipe/values.constants';
 
 
 @Component({
@@ -12,26 +15,77 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class NavBarComponent {
 
-  constructor(private _router: Router, private _activatedRoute: ActivatedRoute){}
-  logIn(){
+  constructor(private _router: Router, private _activatedRoute: ActivatedRoute) { }
+
+  logIn() {
     this._router.navigate([`login`])
-    console.log("lplpp")
   }
-  Register(){
+
+  register() {
     this._router.navigate([`register`])
   }
 
-  allRecipes(){
+  allRecipes() {
     const userId = this._activatedRoute.snapshot.paramMap.get('userId');
     if (userId) {
       this._router.navigate([`${userId}/allRecipes`])
-    } else { 
+    } else {
       this._router.navigate([`/allRecipes`])
     }
-    
   }
 
-  logOut(){
+  addRecipes() {
+    const userId = this._activatedRoute.snapshot.paramMap.get('userId');
+    console.log(userId)
+    if (userId) {
+      this._router.navigate([`${userId}/addRecipes`])
+    } else {
+      this.toast()
+    }
 
+  }
+
+  logOut() {
+
+  }
+
+  onTabChanged(event: MatTabChangeEvent) {
+    const selectedTab = event.tab.textLabel;
+
+    if (selectedTab === 'Log in') {
+      this.logIn();
+    } else if (selectedTab === 'Register') {
+      this.register();
+    }
+    else if (selectedTab === 'All recipes') {
+      this.allRecipes();
+    }
+    else if (selectedTab === 'Add recipe') {
+      this.addRecipes();
+    }
+    else if (selectedTab === 'Log out') {
+      this.logOut();
+    }
+  }
+
+  show(typeIcon = TYPE.INFO) {
+    Swal.fire({
+      title: 'Error!',
+      text: 'Do you want to continue',
+      icon: typeIcon,
+      confirmButtonText: 'Cool'
+    });
+  }
+
+  toast(typeIcon = TYPE.INFO, timerProgressBar: boolean = false) {
+    Swal.fire({
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      icon: typeIcon,
+      timerProgressBar,
+      timer: 5000,
+      title: 'You must sign up first'
+    });
   }
 }

@@ -1,23 +1,8 @@
-<mat-tab-group id="container">
-    <mat-tab label="Log in">
-      <ng-template>
-        <div><button  (click)="logIn()">Log in</button></div>
-      </ng-template>
-    </mat-tab>
-    <mat-tab label="Register">
-      <ng-template>
-        <div><button (click)="Register()">Register</button></div>
-      </ng-template>
-    </mat-tab>
-    <mat-tab label="All recipes">
-      <ng-template>
-        <div><button (click)="allRecipes()">All recipes</button></div>
-      </ng-template>
-    </mat-tab>
-    <mat-tab label="Log out">
-      <ng-template>
-        <div><button (click)="logOut()">Log out</button></div>
-      </ng-template>
-    </mat-tab>
+   <mat-tab-group (selectedTabChange)="onTabChanged($event)">
+    <mat-tab label="Log in"></mat-tab>
+    <mat-tab label="Register"></mat-tab>
+    <mat-tab label="All recipes"></mat-tab>
+    <mat-tab label="Add recipe"></mat-tab>
+    <mat-tab label="Log out"></mat-tab>
   </mat-tab-group>
   
