@@ -13,7 +13,7 @@ export class DurationPipe implements PipeTransform {
     const hours = Math.floor(value / 60);
     const minutes = value % 60;
 
-    let duration = '';
+    let duration = ' ';
     if (hours) {
       duration += `${hours} hour${hours > 1 ? 's' : ''}`;
     }
