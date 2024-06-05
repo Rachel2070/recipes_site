@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators, FormArray } from '@angular/forms';
+import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { Recipe } from '../models/recipe.model';
@@ -30,7 +31,7 @@ export class AddRecipeComponent {
     recipeIngredients: new FormArray([new FormControl("", Validators.required)]),
     recipeDurationM: new FormControl("", Validators.required),
     recipeLevel: new FormControl("", [Validators.required]),
-    recipeImage: new FormControl("", Validators.required)
+    recipeImage: new FormControl("", [Validators.required, this.imageLinkValidator()])
   });
 
   get recipeIngredients(): FormArray {
@@ -105,4 +106,17 @@ export class AddRecipeComponent {
       }
     });
   }
+
+  imageLinkValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const value = control.value;
+      const imageExtensions = /\.(jpeg|jpg|png|bmp|tiff)$/i;
+
+      if (!value || !value.match(/^https?:\/\/.*\.(jpeg|jpg|png|bmp|tiff)$/i)) {
+        return { invalidImageLink: true };
+      }
+      return null;
+    };
+  }
+
 }

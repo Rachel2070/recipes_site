@@ -5,34 +5,42 @@
             <mat-form-field appearance="outline" class="npt">
                 <mat-label>Recipe Name</mat-label>
                 <input matInput formControlName="recipeName" name="name" type="text">
+                <mat-error *ngIf="addRecipeForm.get('recipeName')?.getError">Required</mat-error>
+
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline" class="npt">
                 <mat-label>Category</mat-label>
-                <select matNativeControl (change)="setCategortId($event)" formControlName="categoryId" name="CategoryId">
+                <select matNativeControl (change)="setCategortId($event)" formControlName="categoryId"
+                    name="CategoryId">
                     <option value="1" selected>main</option>
                     <option value="2">extras</option>
                     <option value="3">dessert</option>
                 </select>
+                <mat-error *ngIf="addRecipeForm.get('categoryId')?.getError">Required</mat-error>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline" class="npt">
                 <mat-label>Recipe Duration (in minutes)</mat-label>
                 <input matInput formControlName="recipeDurationM" name="RecipeDurationM" type="number">
+                <mat-error *ngIf="addRecipeForm.get('recipeDurationM')?.getError">Required</mat-error>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline" class="npt">
                 <mat-label>Recipe Level</mat-label>
                 <input matInput formControlName="recipeLevel" name="RecipeLevel" type="number">
+                <mat-error *ngIf="addRecipeForm.get('recipeLevel')?.getError">Required</mat-error>
+
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline" class="npt">
                 <mat-label>Recipe Image Link</mat-label>
                 <input matInput formControlName="recipeImage" name="RecipeImage" type="text">
+                <mat-error *ngIf="addRecipeForm.get('recipeImage')?.getError">Invalid image URL</mat-error>
             </mat-form-field>
         </p>
         <div formArrayName="recipeIngredients">
@@ -41,6 +49,7 @@
                     <mat-form-field appearance="outline" class="npt">
                         <mat-label>Recipe Ingredient</mat-label>
                         <input matInput [formControlName]="i" (input)="onIngredientInput(i)">
+                        <mat-error *ngIf="i == 0">Required</mat-error>
                     </mat-form-field>
                 </p>
             </div>
@@ -51,6 +60,7 @@
                     <mat-form-field appearance="outline" class="npt">
                         <mat-label>Recipe Preparation</mat-label>
                         <input matInput [formControlName]="i" (input)="onPreparationInput(i)">
+                        <mat-error *ngIf="i == 0">Required</mat-error>
                     </mat-form-field>
                 </p>
             </div>
