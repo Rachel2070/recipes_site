@@ -29,7 +29,7 @@ export class AddRecipeComponent {
     recipePreparation: new FormArray([new FormControl("", Validators.required)]),
     recipeIngredients: new FormArray([new FormControl("", Validators.required)]),
     recipeDurationM: new FormControl("", Validators.required),
-    recipeLevel: new FormControl("", Validators.required),
+    recipeLevel: new FormControl("", [Validators.required]),
     recipeImage: new FormControl("", Validators.required)
   });
 
