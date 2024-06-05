@@ -45,7 +45,7 @@ export class NavBarComponent {
   }
 
   logIn() {
-    const user = sessionStorage.getItem("currentUser");
+    const user = sessionStorage?.getItem("currentUser");
     if (user) {
       this.toast2();
     } else {
@@ -54,7 +54,7 @@ export class NavBarComponent {
   }
 
   register() {
-    const user = sessionStorage.getItem("currentUser");
+    const user = sessionStorage?.getItem("currentUser");
     if (user) {
       this.toast2();
     } else {
@@ -63,7 +63,7 @@ export class NavBarComponent {
   }
 
   allRecipes() {
-    const user = sessionStorage.getItem("currentUser");
+    const user = sessionStorage?.getItem("currentUser");
     if (user) {
       const currentUser = JSON.parse(user);
       const userId = currentUser?.userId || currentUser?.user?.userId;
@@ -74,7 +74,7 @@ export class NavBarComponent {
   }
 
   addRecipe() {
-    const user = sessionStorage.getItem("currentUser");
+    const user = sessionStorage?.getItem("currentUser");
     if (user) {
       const currentUser = JSON.parse(user);
       const userId = currentUser?.userId || currentUser?.user?.userId;
@@ -85,7 +85,7 @@ export class NavBarComponent {
   }
 
   logOut() {
-    const user = sessionStorage.getItem("currentUser");
+    const user = sessionStorage?.getItem("currentUser");
     if (user) {
       sessionStorage.removeItem("currentUser");
       this.toast3();
