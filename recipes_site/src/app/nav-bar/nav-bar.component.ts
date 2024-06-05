@@ -112,7 +112,7 @@ export class NavBarComponent {
     });
   }
 
-  toast2(typeIcon = TYPE.INFO, timerProgressBar: boolean = false) {
+  toast2(typeIcon = TYPE.WARNING, timerProgressBar: boolean = false) {
     Swal.fire({
       toast: true,
       position: 'top',
@@ -124,7 +124,7 @@ export class NavBarComponent {
     });
   }
 
-  toast3(typeIcon = TYPE.INFO, timerProgressBar: boolean = false) {
+  toast3(typeIcon = TYPE.SUCCESS, timerProgressBar: boolean = false) {
     Swal.fire({
       toast: true,
       position: 'top',
