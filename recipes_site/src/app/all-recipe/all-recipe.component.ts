@@ -9,11 +9,14 @@ import { MatButtonModule } from '@angular/material/button';
 
 import Swal from 'sweetalert2';
 import { TYPE } from '../add-recipe/values.constants';
+// import { SearchComponent } from '../search/search.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-all-recipe',
   standalone: true,
-  imports: [CommonModule, SmallRecipeComponent, MatButtonModule],
+  imports: [CommonModule, SmallRecipeComponent, MatButtonModule, MatFormFieldModule, MatInputModule],
   templateUrl: './all-recipe.component.html',
   styleUrl: './all-recipe.component.css'
 })

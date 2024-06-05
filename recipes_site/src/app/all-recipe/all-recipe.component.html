@@ -1,6 +1,27 @@
+<div class="container">
+    <mat-form-field appearance="outline" class="npt">
+        <mat-label>Search for a recipe</mat-label>
+        <input matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="npt">
+        <!-- <mat-label>Search by category</mat-label> -->
+        <select matNativeControl name="CategoryId">
+            <option value="0">Search by category</option>
+            <option value="1">main</option>
+            <option value="2">extras</option>
+            <option value="3">dessert</option>
+        </select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="npt">
+        <mat-label>Search by preparation time</mat-label>
+        <input matInput type="number">
+    </mat-form-field>
+</div>
 <div >
-    <button class="btn" mat-raised-button (click)="addRecipe()">Add recipe</button>
-    <div *ngFor="let recipe of recipeList">
+    <!-- <button class="btn" mat-raised-button (click)="addRecipe()">Add recipe</button> -->
+    <div *ngFor="let recipe of recipeList" id="div">
         <app-small-recipe [recipe]="recipe"></app-small-recipe>
     </div>
 </div>
