@@ -148,7 +148,7 @@ export class EditRecipeComponent implements OnInit {
       showConfirmButton: false,
       icon: typeIcon,
       timerProgressBar,
-      timer: 5000,
+      timer: 3000,
       title: 'Recipe was successfully updated'
     });
   }

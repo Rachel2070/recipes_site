@@ -107,7 +107,7 @@ export class NavBarComponent {
       showConfirmButton: false,
       icon: typeIcon,
       timerProgressBar,
-      timer: 5000,
+      timer: 3000,
       title: 'You need to sign up first'
     });
   }
@@ -119,7 +119,7 @@ export class NavBarComponent {
       showConfirmButton: false,
       icon: typeIcon,
       timerProgressBar,
-      timer: 5000,
+      timer: 3000,
       title: 'You are already registered'
     });
   }
@@ -131,7 +131,7 @@ export class NavBarComponent {
       showConfirmButton: false,
       icon: typeIcon,
       timerProgressBar,
-      timer: 5000,
+      timer: 3000,
       title: 'goodbye see you soon'
     });
   }

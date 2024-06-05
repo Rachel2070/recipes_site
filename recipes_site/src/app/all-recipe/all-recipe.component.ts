@@ -12,23 +12,30 @@ import { TYPE } from '../add-recipe/values.constants';
 // import { SearchComponent } from '../search/search.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-all-recipe',
   standalone: true,
-  imports: [CommonModule, SmallRecipeComponent, MatButtonModule, MatFormFieldModule, MatInputModule],
+  imports: [CommonModule, SmallRecipeComponent, MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule],
   templateUrl: './all-recipe.component.html',
   styleUrl: './all-recipe.component.css'
 })
 export class AllRecipeComponent {
-  
- public recipeList!: Recipe[]
- constructor (private _router: Router, private _activatedRoute: ActivatedRoute, private _recipeService: RecipeService) { }
 
-  ngOnInit():void{
+  public recipeList!: Recipe[]
+  public filteredRecipeList: Recipe[] = [];
+  public searchRecipeName = '';
+  public searchCategory = '';
+  public searchDuration = 0;
+
+  constructor(private _router: Router, private _activatedRoute: ActivatedRoute, private _recipeService: RecipeService) { }
+
+  ngOnInit(): void {
     this._recipeService.getRecipeList().subscribe({
       next: (res) => {
-        this.recipeList=res
+        this.recipeList = res
+        this.filteredRecipeList = this.recipeList; 
       },
       error: (err) => {
         console.log("error")
@@ -36,33 +43,15 @@ export class AllRecipeComponent {
     })
   }
 
-  addRecipe(){
-    const userId = this._activatedRoute.snapshot.paramMap.get('userId');
-    if(userId){
-          this._router.navigate([`${userId}/addRecipe`])
-    } else{
-      this.toast()
-    }
-  }
+  filterRecipes() {
+    this.filteredRecipeList = this.recipeList.filter((recipe) => {
+      console.log(this.searchCategory)
+      const matchesName = this.searchRecipeName === '' || recipe.recipeName.toLowerCase().includes(this.searchRecipeName.toLowerCase());
+      const matchesCategory = this.searchCategory === '' || recipe.categoryId === this.searchCategory;
+      const matchesDuration = this.searchDuration === 0 || recipe.recipeDurationM <= this.searchDuration;
 
-  show(typeIcon = TYPE.INFO) {
-    Swal.fire({
-      title: 'Error!',
-      text: 'Do you want to continue',
-      icon: typeIcon,
-      confirmButtonText: 'Cool'
+      return matchesName && matchesCategory && matchesDuration;
     });
   }
 
-  toast(typeIcon = TYPE.INFO, timerProgressBar: boolean = false) {
-    Swal.fire({
-      toast: true,
-      position: 'top',
-      showConfirmButton: false,
-      icon: typeIcon,
-      timerProgressBar,
-      timer: 5000,
-      title: 'You must sign up first'
-    });
-  }
 }
