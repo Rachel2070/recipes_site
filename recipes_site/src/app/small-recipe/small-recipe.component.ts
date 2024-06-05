@@ -8,11 +8,13 @@ import { MatCardModule } from '@angular/material/card';
 
 import Swal from 'sweetalert2';
 import { TYPE } from '../add-recipe/values.constants';
+import { DurationPipe } from './duration.pipe';
+
 
 @Component({
   selector: 'app-small-recipe',
   standalone: true,
-  imports: [MatButtonModule, CommonModule, MatCardModule, MatButtonModule],
+  imports: [MatButtonModule, CommonModule, MatCardModule, MatButtonModule, DurationPipe],
   templateUrl: './small-recipe.component.html',
   styleUrl: './small-recipe.component.css'
 })

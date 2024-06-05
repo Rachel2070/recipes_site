@@ -6,7 +6,7 @@
                 {{ category.categoryName }}
             </mat-card-subtitle> -->
             <mat-card-title> {{recipe.recipeName}}</mat-card-title>
-            <mat-card-title>Duration in minute: {{recipe.recipeDurationM}}</mat-card-title>
+            <mat-card-title>Duration in minute:{{ recipe.recipeDurationM | duration }}</mat-card-title>
             <mat-card-title>Difficulty: {{recipe.recipeLevel}}</mat-card-title>
             <!-- <mat-card-subtitle>Difficulty: <span *ngFor="let star of [].constructor(recipe.recipeLevel); let i = index">
                     ⭐
