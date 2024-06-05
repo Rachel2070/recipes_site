@@ -34,6 +34,7 @@ export class LoginComponent {
     this._userService.getUserByName(userData).subscribe({
       next: (res) => {
         console.log("good", res)
+        sessionStorage.setItem("currentUser", JSON.stringify(res));
         this._router.navigate([`${res.user.userId}/allRecipes`])
       },
       error: (err) => {

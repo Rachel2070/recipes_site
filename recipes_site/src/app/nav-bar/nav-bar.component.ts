@@ -18,35 +18,58 @@ export class NavBarComponent {
   constructor(private _router: Router, private _activatedRoute: ActivatedRoute) { }
 
   logIn() {
-    this._router.navigate([`login`])
+    const user = sessionStorage.getItem("currentUser");
+    if (user) {
+      this.toast2()
+    }
+    else {
+      this._router.navigate([`login`])
+    }
   }
 
   register() {
-    this._router.navigate([`register`])
+    const user = sessionStorage.getItem("currentUser");
+    if (user) {
+      this.toast2()
+    }
+    else {
+      this._router.navigate([`register`])
+    }
+    
   }
 
   allRecipes() {
-    const userId = this._activatedRoute.snapshot.paramMap.get('userId');
-    if (userId) {
-      this._router.navigate([`${userId}/allRecipes`])
+    const user = sessionStorage.getItem("currentUser");
+    if (user) {
+      const currentUser = JSON.parse(user);
+      const userId = currentUser?.userId || currentUser?.user?.userId;
+      this._router.navigate([`${userId}/allRecipes`]);
     } else {
-      this._router.navigate([`/allRecipes`])
+      this._router.navigate([`/allRecipes`]);
     }
   }
 
-  addRecipes() {
-    const userId = this._activatedRoute.snapshot.paramMap.get('userId');
-    console.log(userId)
-    if (userId) {
-      this._router.navigate([`${userId}/addRecipes`])
+  addRecipe() {
+    const user = sessionStorage.getItem("currentUser");
+    if (user) {
+      const currentUser = JSON.parse(user);
+      const userId = currentUser?.userId || currentUser?.user?.userId;
+      this._router.navigate([`${userId}/addRecipe`])
     } else {
       this.toast()
     }
-
   }
 
   logOut() {
-
+    const user = sessionStorage.getItem("currentUser");
+    if (user) {
+      sessionStorage.removeItem("currentUser");
+      this.toast3()
+      this._router.navigate([`allRecipes`])
+    }
+    else {
+      this.toast()
+    }
   }
 
   onTabChanged(event: MatTabChangeEvent) {
@@ -61,7 +84,7 @@ export class NavBarComponent {
       this.allRecipes();
     }
     else if (selectedTab === 'Add recipe') {
-      this.addRecipes();
+      this.addRecipe();
     }
     else if (selectedTab === 'Log out') {
       this.logOut();
@@ -85,7 +108,31 @@ export class NavBarComponent {
       icon: typeIcon,
       timerProgressBar,
       timer: 5000,
-      title: 'You must sign up first'
+      title: 'You need to sign up first'
+    });
+  }
+
+  toast2(typeIcon = TYPE.INFO, timerProgressBar: boolean = false) {
+    Swal.fire({
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      icon: typeIcon,
+      timerProgressBar,
+      timer: 5000,
+      title: 'You are already registered'
+    });
+  }
+
+  toast3(typeIcon = TYPE.INFO, timerProgressBar: boolean = false) {
+    Swal.fire({
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      icon: typeIcon,
+      timerProgressBar,
+      timer: 5000,
+      title: 'goodbye see you soon'
     });
   }
 }

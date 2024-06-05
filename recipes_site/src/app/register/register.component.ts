@@ -40,7 +40,9 @@ export class RegisterComponent {
           alert("this user already registed...")
         }
         else {
-          this._router.navigate([`${res.userId}/allRecipes`])
+          const x =sessionStorage.setItem("currentUser", JSON.stringify(res));
+          const userId = res?.userId;
+          this._router.navigate([`${userId}/allRecipes`])
         }
       },
       error: (err) => {
